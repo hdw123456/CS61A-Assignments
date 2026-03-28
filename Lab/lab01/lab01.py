@@ -8,7 +8,10 @@ def digit(n, k):
     >>> digit(3579, 10)
     0
     """
-    return ____
+    num = int(1)
+    for i in range(0,k):
+        num = num * 10
+    return int( n / num ) % ( 10 )
 
 
 def middle(a, b, c):
@@ -26,7 +29,11 @@ def middle(a, b, c):
     >>> middle(30, 5, 40)
     30
     """
-    return ____
+    res1 = max(a,b)
+    res2 = max(a,c)
+    res3 = max(b,c)
+
+    return min(res1,res2,res3)
 
 
 def falling(n, k):
@@ -42,6 +49,11 @@ def falling(n, k):
     1
     """
     "*** YOUR CODE HERE ***"
+    res = 1
+    for i in range(n-k+1,n+1):
+        res = res * i
+    return res
+
 
 
 def divisible_by_k(n, k):
@@ -65,6 +77,12 @@ def divisible_by_k(n, k):
     0
     """
     "*** YOUR CODE HERE ***"
+    count = 0
+    for i in range(1,n+1):
+        if i % k == 0:
+            print(int(i))
+            count += 1
+    return count
 
 
 def sum_digits(y):
@@ -81,6 +99,16 @@ def sum_digits(y):
     6
     """
     "*** YOUR CODE HERE ***"
+    dividnum = 1
+    i = 0
+    while int(y/(dividnum*10)) != 0:
+        dividnum *= 10
+    while int(dividnum) != 0:
+        i = i + int(y/dividnum) % 10
+        dividnum = dividnum/10
+    return i
+
+ 
 
 
 def double_eights(n):
@@ -99,4 +127,22 @@ def double_eights(n):
     False
     """
     "*** YOUR CODE HERE ***"
+    dividnum = 1
+    row1 = False
+    res = False
+    while int(n/(dividnum*10)) != 0:
+        dividnum *= 10
+    while int(dividnum) != 0:
+        if (int(n/dividnum) % 10) == 8 and row1 == True:
+            res = True
+        elif (int(n/dividnum) % 10) == 8 and row1 == False:
+            row1 = True
+        elif (int(n/dividnum) % 10) != 8:
+            row1 = False
+        dividnum = dividnum/10
+    return res
 
+    
+# if __name__ == '__main__':
+#     result = double_eights(8)   # 你想测试的输入
+# print(result)   
