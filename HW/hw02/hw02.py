@@ -35,7 +35,7 @@ def product(n, term):
     total = 1
     for i in range(1,n+1):
         total = total * term(i)
-    return total
+    return total + 1
 
 
 def accumulate(fuse, start, n, term):
